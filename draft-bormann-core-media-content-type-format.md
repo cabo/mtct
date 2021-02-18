@@ -75,7 +75,7 @@ reg-name-chars = ALPHA / DIGIT / "!" /
                  "#" / "$" / "&" / "." /
                  "+" / "-" / "^" / "_"
 ~~~
-{: #abnf-type-subtype1 gi="artwork" artwork-align="center" title="ABNF for type and
+{: #abnf-type-subtype1 artwork-align="center" title="ABNF for type and
 subtype, cited from RFC 4288"}
 </aside>
 
@@ -140,7 +140,7 @@ tchar          = "!" / "#" / "$" / "%" / "&" / "'" / "*"
                / DIGIT / ALPHA
 OWS        = *( SP / HTAB )
 ~~~
-{: #http-ct gi="artwork" artwork-align="center" title="Content-Type ABNF from RFC 7231"}
+{: #http-ct artwork-align="center" title="Content-Type ABNF from RFC 7231"}
 </aside>
 
 We don't follow this inclusive use established by {{?RFC2616}}, parts
@@ -262,8 +262,8 @@ The ABNF given here is provisional and may need some more cleanup:
 We need to unify the various forms of reg-name, token, etc.
 
 (ABNF just shown for illustration is centered, in an aside, and tagged with
-type "abnf;old" in the XML, while the normative ABNF of this memo is
-left-aligned and tagged with type "abnf".)
+<artwork type="abnf;old"...> in the XML, while the normative ABNF of this memo is
+left-aligned and tagged with <sourcecode type="abnf"...>.)
 
 We need to discuss case-insensitivity, which is usually rather
 insensitive.

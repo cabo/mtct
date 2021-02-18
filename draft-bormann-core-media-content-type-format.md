@@ -74,7 +74,7 @@ reg-name-chars = ALPHA / DIGIT / "!" /
                  "#" / "$" / "&" / "." /
                  "+" / "-" / "^" / "_"
 ~~~
-{: #abnf-type-subtype1 artwork-align="center" title="ABNF for type and
+{: #abnf-type-subtype1 gi="artwork" artwork-align="center" title="ABNF for type and
 subtype, cited from RFC 4288"}
 </aside>
 
@@ -102,7 +102,8 @@ restricted-name-chars =/ "+" ; Characters after last plus always
 
 However, the term "media type" is now generally used for a registered
 combination of a type-name and a subtype-name.  We further
-disambiguate by calling this a media type name, as, in ABNF:
+disambiguate by calling this a *media type name*.
+An ABNF definition of `Media-Type-Name`:
 
 ~~~ abnf
 Media-Type-Name = type-name "/" subtype-name
@@ -138,7 +139,7 @@ tchar          = "!" / "#" / "$" / "%" / "&" / "'" / "*"
                / DIGIT / ALPHA
 OWS        = *( SP / HTAB )
 ~~~
-{: #http-ct artwork-align="center" title="Content-Type ABNF from RFC 7231"}
+{: #http-ct gi="artwork" artwork-align="center" title="Content-Type ABNF from RFC 7231"}
 </aside>
 
 We don't follow this inclusive use established by {{?RFC2616}}, parts
@@ -259,9 +260,9 @@ For Content-Coding, the abbreviation "cc" can be used.
 The ABNF given here is provisional and may need some more cleanup:
 We need to unify the various forms of reg-name, token, etc.
 
-(ABNF just shown for illustration is centered and tagged with
-"abnf;old" in the XML, while the normative ABNF of this memo is
-left-aligned and tagged with "abnf".)
+(ABNF just shown for illustration is centered, in an aside, and tagged with
+type "abnf;old" in the XML, while the normative ABNF of this memo is
+left-aligned and tagged with type "abnf".)
 
 We need to discuss case-insensitivity, which is usually rather
 insensitive.

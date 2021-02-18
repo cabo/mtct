@@ -71,11 +71,15 @@ Table of Contents
    5.  Content-Format
    6.  Abbreviations
    7.  Discussion
-   8.  IANA Considerations
-   9.  Security Considerations
-   10. References
-     10.1.  Normative References
-     10.2.  Informative References
+   8.  Suggested usage
+     8.1.  COSE
+     8.2.  SenML
+     8.3.  ...
+   9.  IANA Considerations
+   10. Security Considerations
+   11. References
+     11.1.  Normative References
+     11.2.  Informative References
    Acknowledgements
    Author's Address
 
@@ -127,7 +131,8 @@ Table of Contents
 
    However, the term "media type" is now generally used for a registered
    combination of a type-name and a subtype-name.  We further
-   disambiguate by calling this a media type name, as, in ABNF:
+   disambiguate by calling this a _media type name_. An ABNF definition
+   of "Media-Type-Name":
 
    Media-Type-Name = type-name "/" subtype-name
 
@@ -274,27 +279,49 @@ Table of Contents
    The ABNF given here is provisional and may need some more cleanup: We
    need to unify the various forms of reg-name, token, etc.
 
-   (ABNF just shown for illustration is centered and tagged with
-   "abnf;old" in the XML, while the normative ABNF of this memo is left-
-   aligned and tagged with "abnf".)
+   (ABNF just shown for illustration is centered, in an aside, and
+   tagged with <artwork type="abnf;old"...> in the XML, while the
+   normative ABNF of this memo is left-aligned and tagged with
+   <sourcecode type="abnf"...>.)
 
    We need to discuss case-insensitivity, which is usually rather
    insensitive.
 
-8.  IANA Considerations
+8.  Suggested usage
+
+8.1.  COSE
+
+   The production "Content-Format-String" is suggested as a more formal
+   definition of the text string choice for the "content type" generic
+   header (number 3) in Section 3.1 of [RFC8152].  While the text in
+   this RFC only discusses numeric Content-Format labels and calls the
+   text version "content type" without defining exactly what can go in
+   there, defining this more exactly as content-format-strings fills a
+   weird gap.
+
+8.2.  SenML
+
+   As discussed above, [I-D.keranen-core-senml-data-ct] makes use of the
+   present specification.
+
+8.3.  ...
+
+   (to be filled in further)
+
+9.  IANA Considerations
 
    While this memo talks a lot about IANA registries, it does not
    require any action from IANA.
 
-9.  Security Considerations
+10.  Security Considerations
 
    Confusion about terminology may, in the worst case, cause security
    problems.  No other security considerations are known to be raised by
    the present memo.
 
-10.  References
+11.  References
 
-10.1.  Normative References
+11.1.  Normative References
 
    [IANA.core-parameters]
               IANA, "Constrained RESTful Environments (CoRE)
@@ -318,7 +345,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
 
-10.2.  Informative References
+11.2.  Informative References
 
    [I-D.keranen-core-senml-data-ct]
               Keranen, A. and C. Bormann, "SenML Data Value Content-
@@ -371,6 +398,10 @@ Table of Contents
               Application Protocol (CoAP)", RFC 7252,
               DOI 10.17487/RFC7252, June 2014,
               <https://datatracker.ietf.org/doc/html/rfc7252>.
+
+   [RFC8152]  Schaad, J., "CBOR Object Signing and Encryption (COSE)",
+              RFC 8152, DOI 10.17487/RFC8152, July 2017,
+              <https://datatracker.ietf.org/doc/html/rfc8152>.
 
 Acknowledgements
 

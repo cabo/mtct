@@ -40,6 +40,7 @@ informative:
   RFC7231: http
   RFC7252: coap
   I-D.keranen-core-senml-data-ct: senml-ct
+  RFC8152: cose
 
 --- abstract
 
@@ -266,6 +267,26 @@ left-aligned and tagged with type "abnf".)
 
 We need to discuss case-insensitivity, which is usually rather
 insensitive.
+
+# Suggested usage
+
+## COSE
+
+The production `Content-Format-String` is suggested as a more formal
+definition of the text string choice for the "content type" generic
+header (number 3) in {{Section 3.1 of RFC8152}}.
+While the text in this RFC only discusses numeric Content-Format
+labels and calls the text version "content type" without defining
+exactly what can go in there, defining this more exactly as
+content-format-strings fills a weird gap.
+
+## SenML
+
+As discussed above, {{-senml-ct}} makes use of the present specification.
+
+## ...
+
+(to be filled in further)
 
 # IANA Considerations
 

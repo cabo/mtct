@@ -6,6 +6,7 @@
 <meta content="initial-scale=1.0" name="viewport">
 <title>On Media-Types, Content-Types, and related terminology</title>
 <meta content="Carsten Bormann" name="author">
+<meta content="Henk Birkholz" name="author">
 <meta content="
        There is a lot of confusion about media-types, content-types, and
 related terminology. 
@@ -843,7 +844,7 @@ address div.right {
 <td class="right">February 2021</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Bormann</td>
+<td class="left">Bormann &amp; Birkholz</td>
 <td class="center">Expires 22 August 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -863,11 +864,15 @@ address div.right {
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
 <dd class="expires"><time datetime="2021-08-22">22 August 2021</time></dd>
-<dt class="label-authors">Author:</dt>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
       <div class="author-name">C. Bormann</div>
 <div class="org">Universität Bremen TZI</div>
+</div>
+<div class="author">
+      <div class="author-name">H. Birkholz</div>
+<div class="org">Fraunhofer SIT</div>
 </div>
 </dd>
 </dl>
@@ -939,64 +944,67 @@ It also defines some ABNF that can be used in these specifications.<a href="#sec
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty compact toc">
-<li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<nav class="toc"><ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.2">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-media-type" class="xref">Media-Type</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.3">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-content-type" class="xref">Content-Type</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.4">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-content-coding" class="xref">Content-Coding</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.5">
+          <li class="compact ulEmpty toc" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-content-format" class="xref">Content-Format</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-abbreviations" class="xref">Abbreviations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-remaining-abnf" class="xref">Remaining ABNF</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-discussion" class="xref">Discussion</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-abbreviations" class="xref">Abbreviations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-suggested-usage" class="xref">Suggested usage</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty compact toc">
-<li class="ulEmpty compact toc" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-cose" class="xref">COSE</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-discussion" class="xref">Discussion</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.2">
-                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-senml" class="xref">SenML</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-suggested-usage" class="xref">Suggested usage</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+<ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.9.2.1">
+                <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-cose" class="xref">COSE</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.3">
-                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-" class="xref">...</a><a href="#section-toc.1-1.8.2.3.1" class="pilcrow">¶</a></p>
+              <li class="compact ulEmpty toc" id="section-toc.1-1.9.2.2">
+                <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-senml" class="xref">SenML</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
 </li>
-            </ul>
-</li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty compact toc">
-<li class="ulEmpty compact toc" id="section-toc.1-1.11.2.1">
-                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
-</li>
-              <li class="ulEmpty compact toc" id="section-toc.1-1.11.2.2">
-                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+              <li class="compact ulEmpty toc" id="section-toc.1-1.9.2.3">
+                <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-" class="xref">...</a><a href="#section-toc.1-1.9.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+<ul class="compact ulEmpty toc">
+<li class="compact ulEmpty toc" id="section-toc.1-1.12.2.1">
+                <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="compact ulEmpty toc" id="section-toc.1-1.12.2.2">
+                <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="compact ulEmpty toc" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </nav>
@@ -1038,9 +1046,11 @@ reg-name-chars = ALPHA / DIGIT / "!" /
           </figcaption></figure>
 </div><a href="#section-1-3" class="pilcrow">¶</a>
 </blockquote>
-<p id="section-1-4"><span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span> contains the semantically equivalent ABNF in
-<a href="#ABNF-type-subtype2" class="xref">Figure 2</a>, which also provides comments that limit the
-use of "." and "+".<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-4"><span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>, obsoleting <span>[<a href="#RFC4288" class="xref">RFC4288</a>]</span>, restricts the
+first character of a reg-name to alphanumeric.
+It contains the otherwise semantically equivalent ABNF shown in
+<a href="#ABNF-type-subtype2" class="xref">Figure 2</a>, however adding prose comments that further
+limit the use of "."  and "+".<a href="#section-1-4" class="pilcrow">¶</a></p>
 <span id="name-abnf-for-type-and-subtype-a"></span><div id="ABNF-type-subtype2">
 <figure id="figure-2">
         <div class="artwork art-text alignLeft art-abnf" id="section-1-5.1">
@@ -1069,9 +1079,10 @@ restricted-name-chars =/ "+" ; Characters after last plus always
       <h2 id="name-media-type">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-media-type" class="section-name selfRef">Media-Type</a>
       </h2>
-<p id="section-2-1">However, the term "media type" is now generally used for a registered
-combination of a type-name and a subtype-name.  We further
-disambiguate by calling this a <em>media type name</em>.
+<p id="section-2-1">Today, the term "media type" is now generally used for a registered
+combination of a type-name and a subtype-name, as well as for the
+specification that defines the semantics of this combination.
+We further disambiguate by calling the former a <em>media type name</em>.
 An ABNF definition of <code>Media-Type-Name</code>:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <span id="name-definition-of-media-type-na"></span><div id="ABNF-Media-Type-Name">
 <figure id="figure-3">
@@ -1104,10 +1115,11 @@ is registered under the Media-Type-Name.)<a href="#section-2-5" class="pilcrow">
       <h2 id="name-content-type">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-content-type" class="section-name selfRef">Content-Type</a>
       </h2>
-<p id="section-3-1">Media types can have parameters <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>, some of which are mandatory.
-In HTTP and many other protocols, these are then used in a
-"Content-Type" header field.
-HTTP <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span> uses:<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">Media types can have parameters <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>, some of which are
+defined by the media type specification to be mandatory.
+In HTTP and many other protocols, media-type-names and parameters are
+then used together in a "Content-Type" header field.
+HTTP <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span> uses the ABNF in <a href="#http-ct" class="xref">Figure 4</a>:<a href="#section-3-1" class="pilcrow">¶</a></p>
 <blockquote id="section-3-2">
         <span id="name-content-type-abnf-from-rfc-"></span><div id="http-ct">
 <figure id="figure-4">
@@ -1129,32 +1141,33 @@ OWS        = *( SP / HTAB )
           </figcaption></figure>
 </div><a href="#section-3-2" class="pilcrow">¶</a>
 </blockquote>
-<p id="section-3-3">We don't follow this inclusive use established by <span>[<a href="#RFC2616" class="xref">RFC2616</a>]</span>, parts
-of which became <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>, namely to use the term media-type for a
-Media-Type-Name with parameters; note that <span>[<a href="#RFC2616" class="xref">RFC2616</a>]</span> was quite confused
-about this by claiming (Section 3.7):<a href="#section-3-3" class="pilcrow">¶</a></p>
-<ul class="ulEmpty normal">
-<li class="ulEmpty normal" id="section-3-4.1">Media-type values are registered with the Internet Assigned Number
+<p id="section-3-3">In the ABNF as established by
+<span>[<a href="#RFC2616" class="xref">RFC2616</a>]</span>, parts of which became <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>, the rule name
+media-type is used for a Media-Type-Name with parameters attached.
+We don't follow this inclusive use of media-type; note that
+<span>[<a href="#RFC2616" class="xref">RFC2616</a>]</span> was quite confused about this term by claiming (<span><a href="https://rfc-editor.org/rfc/rfc2616#section-3.7" class="relref">Section 3.7</a> of [<a href="#RFC2616" class="xref">RFC2616</a>]</span>):<a href="#section-3-3" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3-4.1">Media-type values are registered with the Internet Assigned Number
   Authority (IANA [19]).<a href="#section-3-4.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-3-5">This clearly reverts to the understanding of Media-Type-Name we use.
-We instead define as a separate term:<a href="#section-3-5" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-3-6">
-        <dt id="section-3-6.1">
+<p id="section-3-5">This clearly reverts to the understanding of Media-Type-Name we use.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">Instead of prolonging this confusion, we define as a separate term:<a href="#section-3-6" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3-7">
+        <dt id="section-3-7.1">
 Content-Type:  </dt>
-        <dd style="margin-left: 1.5em" id="section-3-6.2">
-          <p id="section-3-6.2.1">A Media-Type-Name, optionally associated with parameters (separated from
-the media type name and from each other by a semicolon).<a href="#section-3-6.2.1" class="pilcrow">¶</a></p>
+        <dd style="margin-left: 1.5em" id="section-3-7.2">
+          <p id="section-3-7.2.1">A Media-Type-Name, optionally associated with parameters (separated from
+the media type name and from each other by a semicolon).<a href="#section-3-7.2.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
-<p id="section-3-7">Removing the legacy HTAB characters now shunned in polite conversation,
+<p id="section-3-8">Removing the legacy HTAB characters now shunned in polite conversation,
 as well as some other cobwebs, we define the conventional textual
-representation of a Content-Type as:<a href="#section-3-7" class="pilcrow">¶</a></p>
+representation of a Content-Type with the ABNF in <a href="#ABNF-Content-Type" class="xref">Figure 5</a>:<a href="#section-3-8" class="pilcrow">¶</a></p>
 <span id="name-definition-of-content-type"></span><div id="ABNF-Content-Type">
 <figure id="figure-5">
-        <div class="artwork art-text alignLeft art-abnf" id="section-3-8.1">
+        <div class="artwork art-text alignLeft art-abnf" id="section-3-9.1">
 <pre>
 Content-Type   = Media-Type-Name *( *SP ";" *SP parameter )
 parameter      = token "=" ( token / quoted-string )
@@ -1172,10 +1185,10 @@ qdtext         = SP / %x21 / %x23-5B / %x5D-7E
 <a href="#name-definition-of-content-type" class="selfRef">Definition of Content-Type</a>
         </figcaption></figure>
 </div>
-<p id="section-3-9">Note that there is a slight inconsistency between the "token" used
+<p id="section-3-10">Note that there is a slight inconsistency between the "token" used
 here and the "reg-name"/"restricted-name" used above; since media type
 parameters probably will be defined within the guard rails set by
-<span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>, we need to use HTTP's more comprehensive definition here.<a href="#section-3-9" class="pilcrow">¶</a></p>
+<span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>, we need to use HTTP's more comprehensive definition here.<a href="#section-3-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="content-coding">
@@ -1183,9 +1196,9 @@ parameters probably will be defined within the guard rails set by
       <h2 id="name-content-coding">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-content-coding" class="section-name selfRef">Content-Coding</a>
       </h2>
-<p id="section-4-1"><span>[<a href="#RFC2616" class="xref">RFC2616</a>]</span> also introduced the term Content-Coding, a registered name
-for an encoding transformation that has been or can be applied to a
-representation:<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1"><span><a href="https://rfc-editor.org/rfc/rfc2616#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC2616" class="xref">RFC2616</a>]</span> also introduced the term Content-Coding, a
+registered name for an encoding transformation that has been or can be
+applied to a representation:<a href="#section-4-1" class="pilcrow">¶</a></p>
 <span id="name-definition-of-content-codin"></span><div id="ABNF-content-coding">
 <figure id="figure-6">
         <div class="artwork art-text alignLeft art-abnf" id="section-4-2.1">
@@ -1194,11 +1207,11 @@ content-coding   = token
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
-<a href="#name-definition-of-content-codin" class="selfRef">Definition of content-coding</a>
+<a href="#name-definition-of-content-codin" class="selfRef">Definition of content-coding as in RFC 2616</a>
         </figcaption></figure>
 </div>
 <p id="section-4-3">Confusingly, in HTTP the Content-Coding is then given in a header
-field called "Content-Encoding"; we NEVER use this term (except when
+field called "Content-Encoding"; we <strong>never</strong> use this term (except when
 we are in error).  Instead we define:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-4-4">
         <dt id="section-4-4.1">
@@ -1221,18 +1234,18 @@ Content-Coding".<a href="#section-4-5" class="pilcrow">¶</a></p>
       <h2 id="name-content-format">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-content-format" class="section-name selfRef">Content-Format</a>
       </h2>
-<p id="section-5-1">CoAP <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> defines a Content-Format as the combination of a
-Content-Type and a Content-Coding, identified by a numeric identifier
-defined by the "CoAP Content-Formats" registry (a subregistry of
-<span>[<a href="#IANA.core-parameters" class="xref">IANA.core-parameters</a>]</span>), but in more confusing
-words (it did not have the benefit of the present memo).<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">CoAP, in <span><a href="https://rfc-editor.org/rfc/rfc7252#section-1" class="relref">Section 1</a> of [<a href="#RFC7252" class="xref">RFC7252</a>]</span>, defines a Content-Format as the
+combination of a Content-Type and a Content-Coding, identified by a
+numeric identifier defined in the "CoAP Content-Formats" registry (a
+subregistry of <span>[<a href="#IANA.core-parameters" class="xref">IANA.core-parameters</a>]</span>), but in more confusing words (it
+did not have the benefit of the present specifications).<a href="#section-5-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-5-2">
         <dt id="section-5-2.1">
 Content-Format:  </dt>
         <dd style="margin-left: 1.5em" id="section-5-2.2">
           <p id="section-5-2.2.1">the combination of a Content-Type and a Content-Coding, identified
 by a numeric identifier defined by the "CoAP Content-Formats"
-registry.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
+subregistry of <span>[<a href="#IANA.core-parameters" class="xref">IANA.core-parameters</a>]</span>.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1245,7 +1258,7 @@ useful <span>[<a href="#I-D.keranen-core-senml-data-ct" class="xref">I-D.keranen
 <figure id="figure-7">
         <div class="artwork art-text alignLeft art-abnf" id="section-5-4.1">
 <pre>
-Content-Format = 1*DIGIT
+Content-Format = "0" / (POS-DIGIT *DIGIT)
 Content-Format-String   = Content-Type ["@" content-coding]
 </pre>
 </div>
@@ -1265,97 +1278,136 @@ contain an "@" sign, so the parsing of Content-Format-Strings cannot
 be done in a too simplistic way.<a href="#section-5-7" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="abbreviations">
+<div id="remaining-abnf">
 <section id="section-6">
-      <h2 id="name-abbreviations">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-abbreviations" class="section-name selfRef">Abbreviations</a>
+      <h2 id="name-remaining-abnf">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-remaining-abnf" class="section-name selfRef">Remaining ABNF</a>
       </h2>
-<p id="section-6-1">Media type names are sometimes abbreviated as "mt", and Content-Types
+<p id="section-6-1">This specification uses the ABNF given in <a href="#abnf-boilerplate" class="xref">Figure 8</a>, as
+originally defined in <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span> and <span>[<a href="#RFC8866" class="xref">RFC8866</a>]</span>:<a href="#section-6-1" class="pilcrow">¶</a></p>
+<span id="name-commonly-used-abnf-definiti"></span><div id="abnf-boilerplate">
+<figure id="figure-8">
+        <div class="artwork art-text alignLeft art-abnf" id="section-6-2.1">
+<pre>
+DIGIT     =  %x30-39           ; 0 – 9
+POS-DIGIT =  %x31-39           ; 1 – 9
+ALPHA     =  %x41-5A / %x61-7A ; A – Z / a – z
+SP        =  %x20
+</pre>
+</div>
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
+<a href="#name-commonly-used-abnf-definiti" class="selfRef">Commonly Used ABNF Definitions</a>
+        </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="abbreviations">
+<section id="section-7">
+      <h2 id="name-abbreviations">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-abbreviations" class="section-name selfRef">Abbreviations</a>
+      </h2>
+<p id="section-7-1">Media type names are sometimes abbreviated as "mt", and Content-Types
 as "ct".  We propose not to use those abbreviations: Where the long
 form of the values can be used, the long form "Content-Type" can also
-be used to name them.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">For historical reasons, both <span>[<a href="#RFC6690" class="xref">RFC6690</a>]</span> and <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> use the
-abbreviation "ct" for Content-Format (think first and last character).<a href="#section-6-2" class="pilcrow">¶</a></p>
-<p id="section-6-3">For Content-Coding, the abbreviation "cc" can be used.<a href="#section-6-3" class="pilcrow">¶</a></p>
+be used to name them.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">For historical reasons, both <span>[<a href="#RFC6690" class="xref">RFC6690</a>]</span> and <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> use the
+abbreviation "ct" for Content-Format (think first and last character).<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-3">For Content-Coding, the abbreviation "cc" can be used.<a href="#section-7-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="discussion">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-discussion">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-discussion" class="section-name selfRef">Discussion</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-discussion" class="section-name selfRef">Discussion</a>
       </h2>
-<p id="section-7-1">The ABNF given here is provisional and may need some more cleanup:
-We need to unify the various forms of reg-name, token, etc.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">(ABNF just shown for illustration is centered, in an aside, and tagged with
-&lt;artwork type="abnf;old"...&gt; in the XML, while the normative ABNF of this memo is
-left-aligned and tagged with &lt;sourcecode type="abnf"...&gt;.)<a href="#section-7-2" class="pilcrow">¶</a></p>
-<p id="section-7-3">We need to discuss case-insensitivity, which is usually rather
-insensitive.<a href="#section-7-3" class="pilcrow">¶</a></p>
+<p id="section-8-1">The ABNF given here is provisional and may need some more cleanup,
+such as unifying the various forms of reg-name, token, etc.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-2">(ABNF just shown for illustration is centered, in a blockquote, and tagged with
+<code>&lt;artwork type="abnf;old"...&gt;</code> in the XML, while the normative ABNF of this memo is
+left-aligned and tagged with <code>&lt;sourcecode type="abnf"...&gt;</code>.)<a href="#section-8-2" class="pilcrow">¶</a></p>
+<p id="section-8-3">The XPath expression <code>//sourcecode[@type='abnf']/text()</code> can be used
+on the XML form of this specification to extract the ABNF defined here.<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-4">We need to discuss case-insensitivity at some point, which is usually
+rather insensitive.<a href="#section-8-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="suggested-usage">
-<section id="section-8">
+<section id="section-9">
       <h2 id="name-suggested-usage">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-suggested-usage" class="section-name selfRef">Suggested usage</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-suggested-usage" class="section-name selfRef">Suggested usage</a>
       </h2>
 <div id="cose">
-<section id="section-8.1">
+<section id="section-9.1">
         <h3 id="name-cose">
-<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-cose" class="section-name selfRef">COSE</a>
+<a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-cose" class="section-name selfRef">COSE</a>
         </h3>
-<p id="section-8.1-1">The production <code>Content-Format-String</code> is suggested as a more formal
-definition of the text string choice for the "content type" generic
-header (number 3) in <span><a href="https://rfc-editor.org/rfc/rfc8152#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC8152" class="xref">RFC8152</a>]</span>.
-While the text in this RFC only discusses numeric Content-Format
-labels and calls the text version "content type" without defining
-exactly what can go in there, defining this more exactly as
-content-format-strings fills a weird gap.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.1-1"><span><a href="https://rfc-editor.org/rfc/rfc8152#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC8152" class="xref">RFC8152</a>]</span> defines a common COSE header parameter
+(number 3) called "content type" in the description, to indicate the
+type of the data in the payload or ciphertext fields.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.1-2">This header can either be an unsigned integer, indicating a CoRE
+Content-Format number, or a text string that is only defined in
+general terms.
+It points to <span><a href="https://rfc-editor.org/rfc/rfc6838#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC6838" class="xref">RFC6838</a>]</span> for 'text values following the
+syntax of "&lt;type-name&gt;/&lt;subtype-name&gt;"...', but also discusses the
+use of parameters and subparameters; no ABNF or similar detail
+specification is provided.
+The text does not discuss the use of Content-Coding in the text string
+form, probably because nothing like the present document existed at
+the time, creating a weird gap compared with numeric
+Content-Format-Strings.
+The text only has trivial changes in <span><a href="https://tools.ietf.org/html/draft-ietf-cose-rfc8152bis-struct-15#section-3.1" class="relref">Section 3.1</a> of [<a href="#I-D.ietf-cose-rfc8152bis-struct-15" class="xref">I-D.ietf-cose-rfc8152bis-struct-15</a>]</span>.<a href="#section-9.1-2" class="pilcrow">¶</a></p>
+<p id="section-9.1-3">The present specification suggests using the production
+<code>Content-Format-String</code> as a more formal definition of the text string
+that can go into the "content type" (number 3) common header parameter
+in COSE.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="senml">
-<section id="section-8.2">
+<section id="section-9.2">
         <h3 id="name-senml">
-<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-senml" class="section-name selfRef">SenML</a>
+<a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-senml" class="section-name selfRef">SenML</a>
         </h3>
-<p id="section-8.2-1">As discussed above, <span>[<a href="#I-D.keranen-core-senml-data-ct" class="xref">I-D.keranen-core-senml-data-ct</a>]</span> makes use of the present specification.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-9.2-1">As discussed above, <span><a href="https://tools.ietf.org/html/draft-keranen-core-senml-data-ct-02#section-3" class="relref">Section 3</a> of [<a href="#I-D.keranen-core-senml-data-ct" class="xref">I-D.keranen-core-senml-data-ct</a>]</span>
+makes use of the present specification.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="section">
-<section id="section-8.3">
+<section id="section-9.3">
         <h3 id="name-">
-<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-" class="section-name selfRef">...</a>
+<a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-" class="section-name selfRef">...</a>
         </h3>
-<p id="section-8.3-1">(to be filled in further)<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<p id="section-9.3-1">(to be filled in along further use cases)<a href="#section-9.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-9">
+<section id="section-10">
       <h2 id="name-iana-considerations">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-9-1">While this memo talks a lot about IANA registries, it does not
-require any action from IANA.<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">While this memo talks a lot about IANA registries, it does not
+require any action from IANA.<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-10">
+<section id="section-11">
       <h2 id="name-security-considerations">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-10-1">Confusion about terminology may, in the worst case, cause security
-problems.  No other security considerations are known to be raised by
-the present memo.<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-11-1">Confusion about terminology may, in the worst case, cause security
+problems, as can loosely defined syntax elements of a specification.
+No other security considerations are known to be raised by the present
+specification.<a href="#section-11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<section id="section-11">
+<section id="section-12">
       <h2 id="name-references">
-<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
-<section id="section-11.1">
+<section id="section-12.1">
         <h3 id="name-normative-references">
-<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="IANA.core-parameters">[IANA.core-parameters]</dt>
@@ -1380,11 +1432,15 @@ the present memo.<a href="#section-10-1" class="pilcrow">¶</a></p>
 <dd class="break"></dd>
 </dl>
 </section>
-<section id="section-11.2">
+<section id="section-12.2">
         <h3 id="name-informative-references">
-<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-cose-rfc8152bis-struct-15">[I-D.ietf-cose-rfc8152bis-struct-15]</dt>
+        <dd>
+<span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE): Structures and Process"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cose-rfc8152bis-struct-15</span>, <time datetime="2021-02-01" class="refDate">1 February 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-cose-rfc8152bis-struct-15.txt">https://datatracker.ietf.org/doc/html/draft-ietf-cose-rfc8152bis-struct-15.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.keranen-core-senml-data-ct">[I-D.keranen-core-senml-data-ct]</dt>
         <dd>
 <span class="refAuthor">Keranen, A.</span><span class="refAuthor"> and C. Bormann</span>, <span class="refTitle">"SenML Data Value Content-Format Indication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-keranen-core-senml-data-ct-02</span>, <time datetime="2019-07-08" class="refDate">8 July 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-keranen-core-senml-data-ct-02.txt">https://datatracker.ietf.org/doc/html/draft-keranen-core-senml-data-ct-02.txt</a>&gt;</span>. </dd>
@@ -1426,8 +1482,12 @@ the present memo.<a href="#section-10-1" class="pilcrow">¶</a></p>
 <span class="refAuthor">Shelby, Z.</span><span class="refAuthor">, Hartke, K.</span><span class="refAuthor">, and C. Bormann</span>, <span class="refTitle">"The Constrained Application Protocol (CoAP)"</span>, <span class="seriesInfo">RFC 7252</span>, <span class="seriesInfo">DOI 10.17487/RFC7252</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7252">https://datatracker.ietf.org/doc/html/rfc7252</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8152">[RFC8152]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE)"</span>, <span class="seriesInfo">RFC 8152</span>, <span class="seriesInfo">DOI 10.17487/RFC8152</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8152">https://datatracker.ietf.org/doc/html/rfc8152</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8866">[RFC8866]</dt>
+      <dd>
+<span class="refAuthor">Begen, A.</span><span class="refAuthor">, Kyzivat, P.</span><span class="refAuthor">, Perkins, C.</span><span class="refAuthor">, and M. Handley</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 8866</span>, <span class="seriesInfo">DOI 10.17487/RFC8866</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8866">https://datatracker.ietf.org/doc/html/rfc8866</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1437,17 +1497,17 @@ the present memo.<a href="#section-10-1" class="pilcrow">¶</a></p>
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="section-appendix.a-1">Matthias Kovatsch forced the author to make up his mind about this.
-Ari Keranen forced him to write it up, then, and created a convincing
+<p id="section-appendix.a-1"><span class="contact-name">Matthias Kovatsch</span> forced the authors to make up their minds about this.
+<span class="contact-name">Ari Keränen</span> forced them to write it up, then, and created a convincing
 use case of Content-Format-Strings.
-John Mattsson alerted us to a mistake.
-Alexey Melnikov suggested to revive this draft after a year of dormancy.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+<span class="contact-name">John Mattsson</span> alerted us to a mistake.
+<span class="contact-name">Alexey Melnikov</span> suggested reviving this draft after a year of dormancy.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
 <section id="section-appendix.b">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Carsten Bormann</span></div>
@@ -1464,6 +1524,19 @@ Alexey Melnikov suggested to revive this draft after a year of dormancy.<a href=
 <div class="email">
 <span>Email:</span>
 <a href="mailto:cabo@tzi.org" class="email">cabo@tzi.org</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Henk Birkholz</span></div>
+<div dir="auto" class="left"><span class="org">Fraunhofer SIT</span></div>
+<div dir="auto" class="left"><span class="street-address">Rheinstrasse 75</span></div>
+<div dir="auto" class="left">
+<span class="postal-code">64295</span> <span class="locality">Darmstadt</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">Germany</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:henk.birkholz@sit.fraunhofer.de" class="email">henk.birkholz@sit.fraunhofer.de</a>
 </div>
 </address>
 </section>

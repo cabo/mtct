@@ -65,7 +65,7 @@ combination of a type and a subtype.  This lives on in {{-mediatype-reg}},
 which does not even have an ABNF {{-abnf}} production for media type.
 {{-mediatype-reg}}'s predecessor, {{-mediatype-reg-old}}, supplied the ABNF shown in ({{abnf-type-subtype1}}).
 
-<aside markdown="1">
+<blockquote markdown="1">
 ~~~ abnf;old
 type-name = reg-name
 subtype-name = reg-name
@@ -77,7 +77,7 @@ reg-name-chars = ALPHA / DIGIT / "!" /
 ~~~
 {: #abnf-type-subtype1 artwork-align="center" title="ABNF for type and
 subtype, cited from RFC 4288"}
-</aside>
+</blockquote>
 
 {{-mediatype-reg}} contains the semantically equivalent ABNF in
 {{ABNF-type-subtype2}}, which also provides comments that limit the
@@ -128,7 +128,7 @@ In HTTP and many other protocols, these are then used in a
 "Content-Type" header field.
 HTTP {{-http}} uses:
 
-<aside markdown="1">
+<blockquote markdown="1">
 ~~~ abnf;old
 Content-Type = media-type
 media-type = type "/" subtype *( OWS ";" OWS parameter )
@@ -141,7 +141,7 @@ tchar          = "!" / "#" / "$" / "%" / "&" / "'" / "*"
 OWS        = *( SP / HTAB )
 ~~~
 {: #http-ct artwork-align="center" title="Content-Type ABNF from RFC 7231"}
-</aside>
+</blockquote>
 
 We don't follow this inclusive use established by {{?RFC2616}}, parts
 of which became {{-http}}, namely to use the term media-type for a

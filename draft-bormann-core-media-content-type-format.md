@@ -26,6 +26,15 @@ author:
     country: Germany
     phone: +49-421-218-63921
     email: cabo@tzi.org
+  -
+    name: Henk Birkholz
+    org: Fraunhofer SIT
+    abbrev: Fraunhofer SIT
+    email: henk.birkholz@sit.fraunhofer.de
+    street: Rheinstrasse 75
+    code: '64295'
+    city: Darmstadt
+    country: Germany
 
 normative:
   IANA.core-parameters: core-parameters
@@ -41,6 +50,7 @@ informative:
   RFC7252: coap
   I-D.keranen-core-senml-data-ct: senml-ct
   RFC8152: cose
+  I-D.ietf-cose-rfc8152bis-struct-15: cosebis
 
 --- abstract
 
@@ -79,9 +89,11 @@ reg-name-chars = ALPHA / DIGIT / "!" /
 subtype, cited from RFC 4288"}
 </blockquote>
 
-{{-mediatype-reg}} contains the semantically equivalent ABNF in
-{{ABNF-type-subtype2}}, which also provides comments that limit the
-use of "." and "+".
+{{-mediatype-reg}}, obsoleting {{-mediatype-reg-old}}, restricts the
+first character of a reg-name to alphanumeric.
+It contains the otherwise semantically equivalent ABNF shown in
+{{ABNF-type-subtype2}}, however adding prose comments that further
+limit the use of "."  and "+".
 
 ~~~~ abnf
 type-name = restricted-name
@@ -101,9 +113,10 @@ restricted-name-chars =/ "+" ; Characters after last plus always
 
 # Media-Type
 
-However, the term "media type" is now generally used for a registered
-combination of a type-name and a subtype-name.  We further
-disambiguate by calling this a *media type name*.
+Today, the term "media type" is now generally used for a registered
+combination of a type-name and a subtype-name, as well as for the
+specification that defines the semantics of this combination.
+We further disambiguate by calling the former a *media type name*.
 An ABNF definition of `Media-Type-Name`:
 
 ~~~ abnf
@@ -123,10 +136,11 @@ is registered under the Media-Type-Name.)
 
 # Content-Type
 
-Media types can have parameters {{-mediatype-reg}}, some of which are mandatory.
-In HTTP and many other protocols, these are then used in a
-"Content-Type" header field.
-HTTP {{-http}} uses:
+Media types can have parameters {{-mediatype-reg}}, some of which are
+defined by the media type specification to be mandatory.
+In HTTP and many other protocols, media-type-names and parameters are
+then used together in a "Content-Type" header field.
+HTTP {{-http}} uses the ABNF in {{http-ct}}:
 
 <blockquote markdown="1">
 ~~~ abnf;old
@@ -143,16 +157,19 @@ OWS        = *( SP / HTAB )
 {: #http-ct artwork-align="center" title="Content-Type ABNF from RFC 7231"}
 </blockquote>
 
-We don't follow this inclusive use established by {{?RFC2616}}, parts
-of which became {{-http}}, namely to use the term media-type for a
-Media-Type-Name with parameters; note that {{RFC2616}} was quite confused
-about this by claiming (Section 3.7):
+In the ABNF as established by
+{{?RFC2616}}, parts of which became {{-http}}, the rule name
+media-type is used for a Media-Type-Name with parameters attached.
+We don't follow this inclusive use of media-type; note that
+{{RFC2616}} was quite confused about this term by claiming ({{Section
+3.7 of RFC2616}}):
 
 >   Media-type values are registered with the Internet Assigned Number
 >   Authority (IANA \[19]).
 
 This clearly reverts to the understanding of Media-Type-Name we use.
-We instead define as a separate term:
+
+Instead of prolonging this confusion, we define as a separate term:
 
 Content-Type:
 : A Media-Type-Name, optionally associated with parameters (separated from
@@ -160,7 +177,7 @@ Content-Type:
 
 Removing the legacy HTAB characters now shunned in polite conversation,
 as well as some other cobwebs, we define the conventional textual
-representation of a Content-Type as:
+representation of a Content-Type with the ABNF in {{ABNF-Content-Type}}:
 
 ~~~ abnf
 Content-Type   = Media-Type-Name *( *SP ";" *SP parameter )
@@ -183,17 +200,17 @@ parameters probably will be defined within the guard rails set by
 
 # Content-Coding
 
-{{RFC2616}} also introduced the term Content-Coding, a registered name
-for an encoding transformation that has been or can be applied to a
-representation:
+{{Section 3.5 of RFC2616}} also introduced the term Content-Coding, a
+registered name for an encoding transformation that has been or can be
+applied to a representation:
 
 ~~~ abnf
 content-coding   = token
 ~~~
-{: #ABNF-content-coding title="Definition of content-coding"}
+{: #ABNF-content-coding title="Definition of content-coding as in RFC 2616"}
 
 Confusingly, in HTTP the Content-Coding is then given in a header
-field called "Content-Encoding"; we NEVER use this term (except when
+field called "Content-Encoding"; we **never** use this term (except when
 we are in error).  Instead we define:
 
 Content-Coding:
@@ -208,16 +225,16 @@ Content-Coding".
 
 # Content-Format
 
-CoAP {{-coap}} defines a Content-Format as the combination of a
-Content-Type and a Content-Coding, identified by a numeric identifier
-defined by the "CoAP Content-Formats" registry (a subregistry of
-{{-core-parameters}}), but in more confusing
-words (it did not have the benefit of the present memo).
+CoAP, in {{Section 1 of RFC7252}}, defines a Content-Format as the
+combination of a Content-Type and a Content-Coding, identified by a
+numeric identifier defined in the "CoAP Content-Formats" registry (a
+subregistry of {{-core-parameters}}), but in more confusing words (it
+did not have the benefit of the present specifications).
 
 Content-Format:
 : the combination of a Content-Type and a Content-Coding, identified
   by a numeric identifier defined by the "CoAP Content-Formats"
-  registry.
+  subregistry of {{-core-parameters}}.
 
 Note that there has not been a conventional string representation of
 just the combination of a Content-Type and a Content-Coding;
@@ -226,7 +243,7 @@ Content-Format numbers.  However, there are applications where that is
 useful {{-senml-ct}}, so we define:
 
 ~~~ abnf
-Content-Format = 1*DIGIT
+Content-Format = "0" / (POS-DIGIT *DIGIT)
 Content-Format-String   = Content-Type ["@" content-coding]
 ~~~
 {: #ABNF-Content-Format-String title="Definition of Content-Format/-String"}
@@ -244,6 +261,19 @@ Note that a quoted string inside a content-type parameter might
 contain an "@" sign, so the parsing of Content-Format-Strings cannot
 be done in a too simplistic way.
 
+# Remaining ABNF
+
+This specification uses the ABNF given in {{abnf-boilerplate}}, as
+originally defined in {{-abnf}} and {{?RFC8866}}:
+
+~~~ abnf
+DIGIT     =  %x30-39           ; 0 – 9
+POS-DIGIT =  %x31-39           ; 1 – 9
+ALPHA     =  %x41-5A / %x61-7A ; A – Z / a – z
+SP        =  %x20
+~~~
+{: #abnf-boilerplate title="Commonly Used ABNF Definitions"}
+
 # Abbreviations
 
 Media type names are sometimes abbreviated as "mt", and Content-Types
@@ -258,35 +288,54 @@ For Content-Coding, the abbreviation "cc" can be used.
 
 # Discussion
 
-The ABNF given here is provisional and may need some more cleanup:
-We need to unify the various forms of reg-name, token, etc.
+The ABNF given here is provisional and may need some more cleanup,
+such as unifying the various forms of reg-name, token, etc.
 
-(ABNF just shown for illustration is centered, in an aside, and tagged with
-<artwork type="abnf;old"...> in the XML, while the normative ABNF of this memo is
-left-aligned and tagged with <sourcecode type="abnf"...>.)
+(ABNF just shown for illustration is centered, in a blockquote, and tagged with
+`<artwork type="abnf;old"...>` in the XML, while the normative ABNF of this memo is
+left-aligned and tagged with `<sourcecode type="abnf"...>`.)
 
-We need to discuss case-insensitivity, which is usually rather
-insensitive.
+The XPath expression `//sourcecode[@type='abnf']/text()` can be used
+on the XML form of this specification to extract the ABNF defined here.
+
+We need to discuss case-insensitivity at some point, which is usually
+rather insensitive.
+
 
 # Suggested usage
 
 ## COSE
 
-The production `Content-Format-String` is suggested as a more formal
-definition of the text string choice for the "content type" generic
-header (number 3) in {{Section 3.1 of RFC8152}}.
-While the text in this RFC only discusses numeric Content-Format
-labels and calls the text version "content type" without defining
-exactly what can go in there, defining this more exactly as
-content-format-strings fills a weird gap.
+{{Section 3.1 of RFC8152}} defines a common COSE header parameter
+(number 3) called "content type" in the description, to indicate the
+type of the data in the payload or ciphertext fields.
+
+This header can either be an unsigned integer, indicating a CoRE
+Content-Format number, or a text string that is only defined in
+general terms.
+It points to {{Section 4.2 of RFC6838}} for 'text values following the
+syntax of "\<type-name>/\<subtype-name>"...', but also discusses the
+use of parameters and subparameters; no ABNF or similar detail
+specification is provided.
+The text does not discuss the use of Content-Coding in the text string
+form, probably because nothing like the present document existed at
+the time, creating a weird gap compared with numeric
+Content-Format-Strings.
+The text only has trivial changes in {{Section 3.1 of I-D.ietf-cose-rfc8152bis-struct-15}}.
+
+The present specification suggests using the production
+`Content-Format-String` as a more formal definition of the text string
+that can go into the "content type" (number 3) common header parameter
+in COSE.
 
 ## SenML
 
-As discussed above, {{-senml-ct}} makes use of the present specification.
+As discussed above, {{Section 3 of I-D.keranen-core-senml-data-ct}}
+makes use of the present specification.
 
 ## ...
 
-(to be filled in further)
+(to be filled in along further use cases)
 
 # IANA Considerations
 
@@ -296,20 +345,21 @@ require any action from IANA.
 # Security Considerations
 
 Confusion about terminology may, in the worst case, cause security
-problems.  No other security considerations are known to be raised by
-the present memo.
+problems, as can loosely defined syntax elements of a specification.
+No other security considerations are known to be raised by the present
+specification.
 
 --- back
 
 # Acknowledgements {#acknowledgements}
 {: numbered="no"}
 
-Matthias Kovatsch forced the author to make up his mind about this.
-Ari Keranen forced him to write it up, then, and created a convincing
+{{{Matthias Kovatsch}}} forced the authors to make up their minds about this.
+{{{Ari Keränen}}} forced them to write it up, then, and created a convincing
 use case of Content-Format-Strings.
-John Mattsson alerted us to a mistake.
-Alexey Melnikov suggested to revive this draft after a year of dormancy.
+{{{John Mattsson}}} alerted us to a mistake.
+{{{Alexey Melnikov}}} suggested reviving this draft after a year of dormancy.
 
 
-<!--  LocalWords:  subtype HTAB subregistry
+<!--  LocalWords:  subtype HTAB subregistry ciphertext subparameters
  -->

@@ -963,14 +963,14 @@ It also defines some ABNF that can be used in these specifications.<a href="#sec
 </li>
           <li class="ulEmpty compact toc" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-suggested-usage" class="xref">Suggested usage</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.8.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.8.2.1">
                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-cose" class="xref">COSE</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.8.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.2">
                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-senml" class="xref">SenML</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.8.2.3">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.3">
                 <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-" class="xref">...</a><a href="#section-toc.1-1.8.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
@@ -983,11 +983,11 @@ It also defines some ABNF that can be used in these specifications.<a href="#sec
 </li>
           <li class="ulEmpty compact toc" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.11.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.11.2.1">
                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.11.2.2">
                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
@@ -1019,7 +1019,7 @@ type ("text", "audio"), and what we call a media-type now was the
 combination of a type and a subtype.  This lives on in <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>,
 which does not even have an ABNF <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span> production for media type.
 <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>'s predecessor, <span>[<a href="#RFC4288" class="xref">RFC4288</a>]</span>, supplied the ABNF shown in (<a href="#abnf-type-subtype1" class="xref">Figure 1</a>).<a href="#section-1-2" class="pilcrow">¶</a></p>
-<aside id="section-1-3">
+<blockquote id="section-1-3">
         <span id="name-abnf-for-type-and-subtype-c"></span><div id="abnf-type-subtype1">
 <figure id="figure-1">
           <div class="artwork art-text alignCenter art-abnf;old" id="section-1-3.1.1">
@@ -1036,8 +1036,8 @@ reg-name-chars = ALPHA / DIGIT / "!" /
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-abnf-for-type-and-subtype-c" class="selfRef">ABNF for type and subtype, cited from RFC 4288</a>
           </figcaption></figure>
-</div>
-</aside>
+</div><a href="#section-1-3" class="pilcrow">¶</a>
+</blockquote>
 <p id="section-1-4"><span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span> contains the semantically equivalent ABNF in
 <a href="#ABNF-type-subtype2" class="xref">Figure 2</a>, which also provides comments that limit the
 use of "." and "+".<a href="#section-1-4" class="pilcrow">¶</a></p>
@@ -1108,7 +1108,7 @@ is registered under the Media-Type-Name.)<a href="#section-2-5" class="pilcrow">
 In HTTP and many other protocols, these are then used in a
 "Content-Type" header field.
 HTTP <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span> uses:<a href="#section-3-1" class="pilcrow">¶</a></p>
-<aside id="section-3-2">
+<blockquote id="section-3-2">
         <span id="name-content-type-abnf-from-rfc-"></span><div id="http-ct">
 <figure id="figure-4">
           <div class="artwork art-text alignCenter art-abnf;old" id="section-3-2.1.1">
@@ -1127,8 +1127,8 @@ OWS        = *( SP / HTAB )
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-content-type-abnf-from-rfc-" class="selfRef">Content-Type ABNF from RFC 7231</a>
           </figcaption></figure>
-</div>
-</aside>
+</div><a href="#section-3-2" class="pilcrow">¶</a>
+</blockquote>
 <p id="section-3-3">We don't follow this inclusive use established by <span>[<a href="#RFC2616" class="xref">RFC2616</a>]</span>, parts
 of which became <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>, namely to use the term media-type for a
 Media-Type-Name with parameters; note that <span>[<a href="#RFC2616" class="xref">RFC2616</a>]</span> was quite confused

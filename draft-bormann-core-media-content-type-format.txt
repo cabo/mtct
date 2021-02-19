@@ -100,15 +100,15 @@ Table of Contents
    [RFC6838]'s predecessor, [RFC4288], supplied the ABNF shown in
    (Figure 1).
 
-      |               type-name = reg-name
-      |               subtype-name = reg-name
-      |  
-      |               reg-name = 1*127reg-name-chars
-      |               reg-name-chars = ALPHA / DIGIT / "!" /
-      |                                "#" / "$" / "&" / "." /
-      |                                "+" / "-" / "^" / "_"
-      |  
-      |       Figure 1: ABNF for type and subtype, cited from RFC 4288
+   |               type-name = reg-name
+   |               subtype-name = reg-name
+   |  
+   |               reg-name = 1*127reg-name-chars
+   |               reg-name-chars = ALPHA / DIGIT / "!" /
+   |                                "#" / "$" / "&" / "." /
+   |                                "+" / "-" / "^" / "_"
+   |  
+   |       Figure 1: ABNF for type and subtype, cited from RFC 4288
 
    [RFC6838] contains the semantically equivalent ABNF in Figure 2,
    which also provides comments that limit the use of "." and "+".
@@ -153,17 +153,17 @@ Table of Contents
    mandatory.  In HTTP and many other protocols, these are then used in
    a "Content-Type" header field.  HTTP [RFC7231] uses:
 
-      |   Content-Type = media-type
-      |   media-type = type "/" subtype *( OWS ";" OWS parameter )
-      |   type       = token
-      |   subtype    = token
-      |   token          = 1*tchar
-      |   tchar          = "!" / "#" / "$" / "%" / "&" / "'" / "*"
-      |                  / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
-      |                  / DIGIT / ALPHA
-      |   OWS        = *( SP / HTAB )
-      |  
-      |            Figure 4: Content-Type ABNF from RFC 7231
+   |    Content-Type = media-type
+   |    media-type = type "/" subtype *( OWS ";" OWS parameter )
+   |    type       = token
+   |    subtype    = token
+   |    token          = 1*tchar
+   |    tchar          = "!" / "#" / "$" / "%" / "&" / "'" / "*"
+   |                   / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
+   |                   / DIGIT / ALPHA
+   |    OWS        = *( SP / HTAB )
+   |  
+   |              Figure 4: Content-Type ABNF from RFC 7231
 
    We don't follow this inclusive use established by [RFC2616], parts of
    which became [RFC7231], namely to use the term media-type for a

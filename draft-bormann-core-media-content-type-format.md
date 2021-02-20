@@ -310,9 +310,9 @@ rather insensitive.
 (number 3) called "content type" in the description, to indicate the
 type of the data in the payload or ciphertext fields.
 
-This header can either be an unsigned integer, indicating a CoRE
-Content-Format number, or a text string that is only defined in
-general terms.
+This header parameter can either be an unsigned integer, indicating a CoRE
+Content-Format number, or a text string.
+The latter alternative is only defined in general terms.
 It points to {{Section 4.2 of RFC6838}} for 'text values following the
 syntax of "\<type-name>/\<subtype-name>"...', but also discusses the
 use of parameters and subparameters; no ABNF or similar detail
@@ -320,8 +320,8 @@ specification is provided.
 The text does not discuss the use of Content-Coding in the text string
 form, probably because nothing like the present document existed at
 the time, creating a weird gap compared with numeric
-Content-Format-Strings.
-The text only has trivial changes in {{Section 3.1 of I-D.ietf-cose-rfc8152bis-struct-15}}.
+Content-Format values.
+(The text only has trivial changes in {{Section 3.1 of I-D.ietf-cose-rfc8152bis-struct-15}}.)
 
 The present specification suggests using the production
 `Content-Format-String` as a more formal definition of the text string

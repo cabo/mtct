@@ -15,7 +15,7 @@ pi:
   toc: 'yes'
 title: On Media-Types, Content-Types, and related terminology
 abbrev: Content-Types
-date: 2021-02-18
+date: 2021-02-22
 author:
   -
     name: Carsten Bormann
@@ -169,7 +169,7 @@ We don't follow this inclusive use of media-type; note that
 
 This clearly reverts to the understanding of Media-Type-Name we use.
 
-Instead of prolonging this confusion, we define as a separate term:
+In order to resolve some of this confusion, we define as a separate term:
 
 Content-Type:
 : A Media-Type-Name, optionally associated with parameters (separated from
@@ -321,7 +321,8 @@ The text does not discuss the use of Content-Coding in the text string
 form, probably because nothing like the present document existed at
 the time, creating a weird gap compared with numeric
 Content-Format values.
-(The text only has trivial changes in {{Section 3.1 of I-D.ietf-cose-rfc8152bis-struct-15}}.)
+(The text only has trivial changes in its updated version in {{Section
+3.1 of I-D.ietf-cose-rfc8152bis-struct-15}}.)
 
 The present specification suggests using the production
 `Content-Format-String` as a more formal definition of the text string
